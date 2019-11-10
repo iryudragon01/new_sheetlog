@@ -1,0 +1,126 @@
+
+/*body{
+  background-image: url("../images/bgimage.jpg");
+  color: #fff;
+  text-family: arial,sans-serif;
+  font-size: 16px;
+  line-height: 1.6em;
+  margin: 0 0;
+}*/
+.clr{
+  clear: both;
+  overflow: hidden;
+}
+
+body{
+  background-image: url("../images/bgimage.jpg");
+  overflow: hidden;
+
+}
+#navbar{
+  margin: 0px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+#navbar ul{
+  background-color: orange;
+}
+#navbar li{
+  margin: 0px;
+  display: inline;
+  list-style: none;
+}
+#navbar a{
+  text-decoration: none;
+  color: black;
+  background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+.container{
+  width: 90%;
+  margin:55px auto;
+  background-color: #ccc;
+}
+#content-menu-fix{
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+#content-menu-fix button{
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+/* Change background color of buttons on hover */
+#content-menu-fix button:hover {
+  background-color: #ddd;
+}
+.table{
+  width: 100%
+}
+.table th{
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+.table td{
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  text-align: center;
+}
+.table td label{
+
+}
+.table td input{
+  background-color:inherit;
+  font-size: 17px;
+  padding: 14px 16px;
+  max-width: 100px;
+  margin: auto;
+}
+
+
+
+
+
+.topup_display{
+  line-height: 0px;
+}
+.topup_display p{
+  font-size: 17px;
+  padding: 14px 16px;
+  float: left;
+  width: 50px;
+  text-align: right;
+}
+.topup_display p.income{
+  color: green;
+}
+.topup_display p.expense{
+  color: red;
+}
+.topup_display p.temp{
+  color: red;
+}
+.topup_display p:first-child{
+  width: 170px;
+}
+/*
+@@media(max-width=600px) {
+
+}
+*/

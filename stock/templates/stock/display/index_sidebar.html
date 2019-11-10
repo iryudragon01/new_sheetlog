@@ -1,0 +1,19 @@
+{% if top_ups %}
+    {%for top_up in top_ups%}
+        <div class="topup_display">
+        {%for fill in top_up%}
+                <p>{{fill}}</p>
+        {%endfor%}
+      </div>
+      <div class="clr">
+
+      </div>
+    {%endfor%}
+
+
+
+
+
+
+
+{% endif %}

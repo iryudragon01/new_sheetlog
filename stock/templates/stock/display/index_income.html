@@ -1,0 +1,49 @@
+<div class="topup_display">
+  <p>date</p>
+  <p>name</p>
+  <p>value</p>
+  <p>summary</p>
+</div>
+<div class="clr"></div>
+{% if incomes %}
+{%for income in incomes %}
+  <div class="topup_display">
+      <p>{{income.date_log}}</p>
+      <p>{{income.name}}</p>
+      <p class="income">{{income.value}}</p>
+      <p >{% if forloop.last %}
+          {{sum_income}} {% endif %}</p>
+  </div>
+<div class="clr"></div>
+{% endfor %}
+{% endif %}
+
+
+
+{% if expenses %}
+{%for expense in expenses %}
+  <div class="topup_display">
+      <p>{{expense.date_log}}</p>
+      <p>{{expense.name}}</p>
+      <p class="expense">{{expense.value}}</p>
+      <p >{% if forloop.last %}
+          {{sum_expense}} {% endif %}</p>
+  </div>
+<div class="clr"></div>
+{% endfor %}
+{% endif %}
+
+
+
+{% if temps %}
+{%for temp in temps %}
+  <div class="topup_display">
+      <p>{{temp.date_log}}</p>
+      <p>{{temp.name}}</p>
+      <p class="temp">{{temp.value}}</p>
+      <p >{% if forloop.last %}
+          {{sum_temp}} {% endif %}</p>
+  </div>
+<div class="clr"></div>
+{% endfor %}
+{% endif %}

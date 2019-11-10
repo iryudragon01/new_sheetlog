@@ -1,0 +1,60 @@
+
+    <!-- Bootstrap 4 -->
+
+    <!-- Font Awesome -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <!-- Moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js" integrity="sha256-VBLiveTKyUZMEzJd6z2mhfxIqz3ZATCuVMawPZGzIfA=" crossorigin="anonymous"></script>
+
+    <!-- Tempus Dominus Bootstrap 4 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css" integrity="sha256-XPTBwC3SBoWHSmKasAk01c08M6sIA5gF5+sRxqak2Qs=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js" integrity="sha256-z0oKYg6xiLq3yJGsp/LsY9XykbweQlHl42jHv2XTBz4=" crossorigin="anonymous"></script>
+
+
+<div class="container" id="date_block" style="display:none">
+    <div class="row">
+        <div class="col-sm-4">
+            <form action="" method="post">
+                {% csrf_token %}
+        <table><tr>
+        <th class="text-white">start:</th><th><input  type="button" class="form-control datetimepicker-input" id="startdate" data-toggle="datetimepicker" data-target="#startdate"/>
+       </th>
+       <th class="text-white">end:</th><th><input type="button" class="form-control datetimepicker-input" id="enddate" data-toggle="datetimepicker" data-target="#enddate"/>
+        </th>
+            <th><input class="btn btn-success" type="submit" value="get Data" /></th>
+            <th><input class="btn btn-warning" value="Cancel" onclick="getdate()"/></th>
+
+        </tr>
+        </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container bg-dark text-white" id="date_display" onclick="getdate()">
+    <input class="btn text-white" type="button" value="{{start_date}}">
+
+</div>
+
+
+
+        <script type="text/javascript">
+            $(function () {
+                $('#startdate').datetimepicker({
+                    defaultdate:"{{start_date}}",
+                    minDate: "{{start_date}}",
+                    maxDate: "{{end_date}}"
+                });
+            });
+            $(function () {
+                $('#enddate').datetimepicker({
+                    defaultdate:"{{end_date}}",
+                    minDate: "{{start_date}}",
+                    maxDate: "{{end_date}}"
+                });
+            });
+        </script>
+
+
+       

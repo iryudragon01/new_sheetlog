@@ -1,0 +1,62 @@
+{% extends 'stock/layout.html'%}
+{%block content%}
+{% load static %}
+<link rel="stylesheet" href="{% static 'stock/css/edit.css' %}">
+<div class="container" >
+
+{% if item %}
+<form action="" method="post" id="form">
+    {%csrf_token%}
+<div class="row">
+    <p>สินค้า</p>
+    <p>{{item.name}}</p>
+</div><div class="clr"></div>
+<div class="row">
+    <p>ราคา</p>
+    <p><input name="price" id='price' type="number" value="{{item.price}}"></p>
+</div><div class="clr"></div>
+<div class="row">
+      <p>ประเภท</p>
+      <p onclick="popup_type(event)" id="type_selectd"> type</p>
+</div>
+<div class="clr"></div>
+<div class="row">
+  <p><a href="{% url 'stock:list_item' %}">Cancel</a></p>
+  <p><a onclick="submitform('UPDATE')">Update</a></p>
+
+</div><div class="clr"></>
+  <div class="row">
+    <p>ลบสินค้าออกจาก ฐานข้อมูล</p>
+    <p><a onclick="submitform('DELETE')">ลบ {{item.name }}</a></p>
+
+  </div><div class="clr">
+
+    <div id="popup">
+      <ul id='setposition'>
+            <li value="1" onclick="select_type(this)" onblur="blur_type()">Ticket</li>
+            <li value="2" onclick="select_type(this)" onblur="blur_type()">Air pay</li>
+            <li value="3" onclick="select_type(this)" onblur="blur_type()">Food</li>
+      </ul>
+
+    </div>
+
+  </div>
+  <div class="hidden_form">
+    <input type="input"  id="type"   name="type"   value="{{item.type}}">
+    <button type="sumbit" id="UPDATE" name="UPDATE">UPDATE</button>
+    <button type="sumbit" id="DELETE" name="DELETE" >DELETE</button>
+  </div>
+</form>
+{% else %}
+ไม่พบข้อมูล
+{% endif %}
+
+
+</div>
+{%endblock%}
+{%block script%}
+<script type="text/javascript" src="{% static 'stock/scripts/edit.js' %}">
+
+</script>
+
+{%endblock%}

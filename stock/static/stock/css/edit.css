@@ -1,0 +1,76 @@
+.container{
+  width: 100%;
+  background-color: #ccc;
+  margin: auto;
+
+}
+.clr{
+  clear: both;
+}
+.row{
+  border: 1px solid DodgerBlue;
+  font-size: 30px;
+}
+.row p{
+  float: left;
+  text-align: right;
+
+  font-family: arial;
+  padding: 14px 16px;
+  margin-right: 50px;
+}
+.row p:first-child{
+  width: 170px;
+}
+.row p:last-child{
+  width: 200px;
+}
+.row #price{
+  font-size: 30px;
+  max-width: 150px;
+  text-align: right;
+  background-color: inherit;
+}
+.row a{
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+#popup{
+  display: none;
+}
+#popup ul{
+  position: fixed;
+  /*top: 200px;
+  left: 480px;*/
+}
+#popup li{
+  list-style: none;
+  text-align: right;
+  font-size: 30px;
+  padding: 14px 56px;
+  background-color: #ccc;
+}
+#popup li:hover{
+  background-color: #ddd;
+}
+.hidden_form{
+  display: none;
+}
+
+
+@media(min-width: 1000px) {
+  .container{
+    width: 80%;
+  }
+  .row{
+    font-size: 22px;
+  }
+  .row p:first-child{
+    width: 350px;
+  }
+  #popup li{
+    font-size: 22px;
+  }
+
+}

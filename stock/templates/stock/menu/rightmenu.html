@@ -1,0 +1,14 @@
+
+  <ul id="nav-right">
+    {% if is_Display_reset %}
+        {% ifequal is_Display_reset '1' %}
+            <li><a href="{% url 'account_control:reset_index' %}">Reset Data</a></li>
+        {% endifequal %}
+    {% endif %}
+    {% if user.is_authenticated %}
+        <li><a href="{% url 'account_control:logout' %}">Logout</a></li>
+    {% else %}
+        <li><a href="{% url 'account_control:index' %}">Login</a></li>
+        <li><a href="{% url 'account_control:register' %}">Register</a></li>
+    {% endif %}
+  </ul>

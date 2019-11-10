@@ -1,0 +1,37 @@
+
+{% if items %}
+<form action="" method="post" />
+{%csrf_token%}
+<table class="table">
+    <tr>
+        <th>name</th>
+        <th>first</th>
+        <th>last</th>
+        <th>price</th>
+        <th>sales</th>
+        <th>money</th>
+        <th>sum</th>
+    </tr>
+{% for item,item_start,item_end,item_sale,item_money,item_sum in items %}
+    <tr>
+        <th>{{item.name}}</th>
+        <td>{{item_start}}</td>
+        <td  onclick="showinput({{forloop.counter}})" class="last_value">
+            <label>{{item_end}}</label>
+            <input name="{{item.name}}" value="{{item_end}}"
+              onblur="blurinput({{forloop.counter}},this)"
+              type="number" onkeydown="keydowninput(event,{{forloop.counter}},this)"
+            />
+        </td>
+        <td>{{ item.price }}</td>
+        <td>{{ item_sale }}</td>
+        <td>{{item_money }}</td>
+    <td>{% if forloop.last %}
+        {{item_sum}} {% endif %}</td>
+    </tr>
+{% endfor %}
+</table>
+
+    </form>
+<!--  </table> -->
+{% endif %}

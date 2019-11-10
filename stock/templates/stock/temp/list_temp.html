@@ -1,0 +1,31 @@
+{% extends 'stock/layout.html' %}
+{% block content %}
+<div class="container">
+{% if temps %}
+    <table class="table">
+      <tr>
+        <th>วันที่</th>
+        <th>รายการ</th>
+        <th>จำนวน</th>
+        <th>แก้ไข</th>
+      </tr>
+      {% for temp in temps %}
+      <tr>
+        <td>{{temp.date_log}}</td>
+        <td>{{temp.name}}</td>
+        <td>{{temp.value}}</td>
+        <td><a href="{% url 'stock:edit_temp' temp.id %}"><button>Edit</button></a></td>
+      </tr>
+      {% endfor %}
+{% endif %}
+    <tr>
+        <td>
+            <a class="btn btn-success" href="{% url 'stock:create_statement' %}">เพิ่มรายการ</a>
+        </td>
+
+    </tr>
+
+
+
+</table>
+{% endblock %}

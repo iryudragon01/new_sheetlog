@@ -1,0 +1,28 @@
+{% extends "stock/layout.html"%}
+
+{%block content%}
+{% load static %}
+<div class="container">
+  <div id="content-menu-fix">
+    <button class="tablink" id="main_button" onclick="opentab('main_tab',this,'#4caf50')">main</button>
+    <button class="tablink" onclick="opentab('topup_tab',this,'#900C3F')">topup</button>
+    <button class="tablink" onclick="opentab('statement_tab',this,'#C70039')">statement</button>
+    <div class="clr"></div>
+  </div>
+              <div class="tabcontent" id="main_tab">
+                    {% include 'stock/display/index_main.html' %}
+              </div><div class="tabcontent" id="statement_tab">
+                    {% include 'stock/display/index_income.html' %}
+              </div>
+                <div class="tabcontent" id="topup_tab">
+                    {% include 'stock/display/index_sidebar.html' %}
+                </div>
+</div>
+
+{% endblock content %}
+
+
+{% block script %}
+
+<script src="{% static 'stock/scripts/display.js' %}" ></script>
+{% endblock script %}
