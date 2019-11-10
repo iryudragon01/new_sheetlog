@@ -25,7 +25,7 @@
 .row p:last-child{
   width: 200px;
 }
-.row #price{
+.row input{
   font-size: 30px;
   max-width: 150px;
   text-align: right;
