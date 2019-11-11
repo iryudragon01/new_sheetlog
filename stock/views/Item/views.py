@@ -30,8 +30,12 @@ def EditView(request, pk=None):
         return redirect('account_control:permit_denied')
     if id is not None:
         if request.POST:
-            edit(request, pk)
+            result = edit(request, pk)
+            if result is not 'success' :
+                content = {'item': Item.objects.get(id=pk),
+                           'message': result}
+                return render(request,'stock/Item/edit.html',content)
         elif Item.objects.filter(id=pk).count() == 1:
-            content = {'item': Item.objects.get(id=pk) }
+            content = {'item': Item.objects.get(id=pk)}
             return render(request, 'stock/Item/edit.html', content)
     return redirect('stock:list_item')

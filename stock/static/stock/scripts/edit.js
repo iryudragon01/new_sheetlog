@@ -46,6 +46,21 @@ function submitform(method1){
 }
 
 
+function verify(arg,position){
+    vrfElement = document.getElementById('verifypwd')
+    if(arg=='DELETE'){
+     vrfElement.style.top = position.pageY+'px'
+     vrfElement.style.left = position.pageX+'px'
+     vrfElement.style.display = "block";
+  }else if(arg == 'submit'){
+      vrfElement.style.display ='none'
+      document.getElementById('form_verifypwd').value=vrfElement.querySelector('input').value
+      submitform('DELETE')
+    }else{
+      vrfElement.style.display = "none"
+    }
+}
+
 
 
 set_type('set')
