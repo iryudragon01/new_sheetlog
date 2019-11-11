@@ -1,6 +1,7 @@
 from stock.models import Item,TopUp
 from datetime import datetime
 from account_control.models import UserStart
+from django.contrib.auth.models import User
 
 
 def top_up(request):
@@ -23,12 +24,16 @@ def top_up(request):
 
 def edit(request, pk):
     if 'DELETE' in request.POST:
-        del_top_up = TopUp.objects.get(id=pk)
-        del_top_up.delete()
+        if check_password(request):
+            del_top_up = TopUp.objects.get(id=pk)
+            del_top_up.delete()
+            return 'success'
+        return 'password wrong!'
     else:
         update_top_up = TopUp.objects.get(id=pk)
         update_top_up.value = int(request.POST.get('value'))
         update_top_up.save()
+        return 'success'
 
 
 def list(request):
@@ -37,4 +42,9 @@ def list(request):
     content = {'top_ups': top_ups}
     return content
 
-    
+
+def check_password(request):
+    if User.objects.get(username=request.user). \
+            check_password(request.POST.get('form_verifypwd')):
+        return True
+    return False

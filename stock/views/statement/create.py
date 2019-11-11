@@ -1,5 +1,6 @@
 from stock.models import Income, Expense
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 def create(request):
@@ -31,8 +32,10 @@ def edit(request):
     if int(value) < 0:
         return 'Amount is not valid'
     if 'DELETE' in request.POST:
-        Income.objects.get(id=id).delete()
-        return 'deleted'
+        if check_password(request):
+            Income.objects.get(id=id).delete()
+            return 'deleted'
+        return 'password is not correct'
     else:
         update = Income.objects.get(id=id)
         update.value = int(value)
@@ -48,10 +51,19 @@ def editexpense(request):
     if int(value) < 0:
         return 'Amount is not valid'
     if 'DELETE' in request.POST:
-        Expense.objects.get(id=id).delete()
-        return 'deleted'
+        if check_password(request):
+            Expense.objects.get(id=id).delete()
+            return 'deleted'
+        return 'password is not correct'
     else:
         update = Expense.objects.get(id=id)
         update.value = int(value)
         update.save()
         return 'updated'
+
+
+def check_password(request):
+    if User.objects.get(username=request.user). \
+            check_password(request.POST.get('form_verifypwd')):
+        return True
+    return False

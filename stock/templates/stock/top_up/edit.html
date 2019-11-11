@@ -1,6 +1,11 @@
 {% extends 'stock/layout.html'%}
 {%block content%}
 {% load static %}
+{% if message %}
+<div class="message">
+  <p>{{message}}</p>
+</div>
+{% endif %}
 {% if top_up %}
 <form class="" action="" id='form' method="post">
   {% csrf_token %}
@@ -27,7 +32,7 @@
 <div class="clr"></div>
 <div class="hidden_form">
   <a href="{% url 'stock:list_top_up' %}" id="back"></a>
-  <input type="text" id="form_verifypwd" value="">
+  <input type="text" name ="form_verifypwd" id="form_verifypwd" value="">
   <button type="submit" name ="submit" id="submit"></button>
   <button type="submit" name="DELETE"  id="DELETE"></button>
 </div>

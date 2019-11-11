@@ -1,6 +1,6 @@
-from django.shortcuts import render,redirect
-from stock.models import Item,TopUp
-from stock.views.Top_up.Data2View import list,top_up,edit
+from django.shortcuts import render, redirect
+from stock.models import Item, TopUp
+from stock.views.Top_up.Data2View import list, top_up, edit
 from account_control.scripts.script import is_superior
 
 
@@ -14,16 +14,19 @@ def Top_up_View(request):
 
 def Top_up_List_View(request):
     content = list(request)
-    return render(request, 'stock/top_up/list.html',content)
+    return render(request, 'stock/top_up/list.html', content)
 
 
-def Top_up_Edit_View(request,pk):
+def Top_up_Edit_View(request, pk):
     if not is_superior(request):
         return redirect('account_control:permit_denied')
     if TopUp.objects.filter(id=pk).count() == 1:
+        content = {'top_up': TopUp.objects.get(id=pk)}
         if request.POST:
-            edit(request,pk)
-        else:
-            content = {'top_up': TopUp.objects.get(id=pk)}
-            return render(request, 'stock/top_up/edit.html', content)
+            result = edit(request, pk)
+            if result == 'success':
+                return redirect('stock:list_top_up')
+            else:
+                content['message'] = result
+        return render(request, 'stock/top_up/edit.html', content)
     return redirect('stock:list_top_up')
