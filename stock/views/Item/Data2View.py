@@ -1,6 +1,5 @@
 from stock.models import Item
 from django.contrib.auth.models import User
-from django.contrib.auth.hashers import check_password
 def create(request):
     empty = check_emtpy([request.POST.get('name'),
                                 request.POST.get('price'),
@@ -21,7 +20,7 @@ def create(request):
 
 def edit(request, pk):
     if 'DELETE' in request.POST:
-        if request.POST.get('form_verifypwd') == '46503888':
+        if User.objects.get(username=request.user).check_password(request.POST.get('form_verifypwd')):
             del_item = Item.objects.get(id=pk)
             del_item.delete()
             return 'success'

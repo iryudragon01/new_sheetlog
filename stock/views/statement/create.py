@@ -5,7 +5,7 @@ from django.utils import timezone
 def create(request):
     name = request.POST['name']
     value = request.POST['value']
-    record_type = request.POST['record_type']
+    record_type = request.POST['type']
     result = {}
     if value == '' or name == '':
         result['message'] = 'name and amount cannot be empty!!'

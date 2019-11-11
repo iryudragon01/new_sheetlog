@@ -18,13 +18,23 @@
     </div><div class="clr"></div>
     <div class="row">
         <p>ประเภท</p>
-        <p id="type_selectd" onclick="popup_type(event,'popup_statement')">select</p>
+        <p id="type_selectd" onclick="popup_type(event)">เลือกประเภท</p>
     </div><div class="clr"></div>
     <div class="row">
-      <p><button type="button" name="button">Cancel</button></p>
+      <p><button type="button" onclick="history.go(-1)">Cancel</button></p>
       <p><button type="submit" >บันทึก</button></p>
 
     </div><div class="clr"></div>
+  <div class="hidden_form">
+    <input type="text" name="type" id="type" value="">
+
+  </div>
 </form>
 </div>
+{% include 'stock/menu/popup.html' %}
 {% endblock%}
+{% block script %}
+<script type="text/javascript">
+  popup = 'popup_statement'
+</script>
+{% endblock script %}
