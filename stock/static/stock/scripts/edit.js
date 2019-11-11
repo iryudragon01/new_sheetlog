@@ -1,44 +1,33 @@
+var popup
+function viewpage(){
+  mytype=document.getElementById('type').value
+  select = document.getElementById(popup).childNodes
+  choice=eval(mytype*2-1)
+  set_type(select[choice])
+}
+
 function popup_type(e){
-    position= document.getElementById('setposition')
+    position= document.getElementById(popup)
     position.style.top=eval(e.pageY-50)+'px'
     position.style.left=eval(e.pageX-50)+'px'
-    document.getElementById('popup').style.display="block";
+    position.style.display="block";
   }
 
 
 function select_type(type){
-    document.getElementById('popup').style.display="none";
-    set_type('change',type)
+  document.getElementById(popup).style.display="none"
+  set_type(type)
   }
 
 function blur_type(){
     document.getElementById('popup').style.display="none";
 }
 
-function set_type(mode,change){
+function set_type(type){
   type_hidden = document.getElementById('type')
   type_show = document.getElementById('type_selectd')
-  type_value = [
-            ({value:'1',display:'Ticket'}),
-            ({value:'2',display:'Air pay'}),
-            ({value:'3',display:'Food'})]
-
-  if(mode=='set'){
-      for(i=0;i<type_value.length;i++){
-          if(type_value[i].value==type_hidden.value){
-            type_show.innerHTML=type_value[i].display
-            }
-          }}
-
-  else if(mode=='change'){
-      for(i=0;i<type_value.length;i++){
-        if(type_value[i].value==change.value){
-          type_show.innerHTML=type_value[i].display
-          type_hidden.value = type_value[i].value
-        }
-    }
-
-  }
+  type_show.innerHTML=type.innerHTML
+  type_hidden.value = type.value
 }
 
 function submitform(method1){
@@ -60,7 +49,3 @@ function verify(arg,position){
       vrfElement.style.display = "none"
     }
 }
-
-
-
-set_type('set')

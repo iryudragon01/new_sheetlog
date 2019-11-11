@@ -1,28 +1,29 @@
 {% extends 'stock/layout.html' %}
 {% block content %}
+{% load static %}
+
 {% if items %}
-<main role="main" class="container">
-            <div class="row">
-              <div class="col-md-3">
-
-<form class="form" action="" method="post">
+<form class="form" action="" method="post" id="form">
     {% csrf_token %}
-    <div class="form-group row">
+    <div class="container">
     {%for item in items %}
-        <div class="form-group">
-            <label class="form-control-label">{{item.name}}</label>
-            <input class="form-control form-control-lg" type="number" name="{{item.name}}" value="0" \>
-            <br>
-        </div>
+        <div class="row">
+          <p>{{item.name}}</p>
+          <p><input type="number" name="{{item.name}}" value="0" \></p>
+        </div><div class="clr"></div>
     {% endfor %}
-    <input type="submit" value="Top Up">
+<div class="row">
+<p><button type="button" onclick="submitform('back')">Cancel</button></p>
+<p><button type="button" onclick="submitform('submit')">Topup</button></p>
+</div><p class="clr"></p>
+
+
+
     </div>
-
-</form>
+<div class="hidden_form">
+  <a href="{% url 'stock:list_top_up' %}" id="back"></a>
+  <button type="submit" name="submit" id="submit"></button>
 </div>
-            </div>
-</main>
-
+</form>
 {% endif %}
 {% endblock %}
-k script %}

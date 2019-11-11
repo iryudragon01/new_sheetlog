@@ -1,9 +1,6 @@
 {% extends 'stock/layout.html'%}
 {%block content%}
 {% load static %}
-<link rel="stylesheet" href="{% static 'stock/css/edit.css' %}">
-
-
 <div class="container" >
 {% if message %}
     <div class="message">
@@ -24,7 +21,7 @@
 </div><div class="clr"></div>
 <div class="row">
       <p>ประเภท</p>
-      <p onclick="popup_type(event)" id="type_selectd"> type</p>
+      <p onclick="popup_type(event,'popup_item')" id="type_selectd"> type</p>
 </div>
 <div class="clr"></div>
 <div class="row">
@@ -38,15 +35,8 @@
 
   </div><div class="clr">
 
-    <div id="popup">
-      <ul id='setposition'>
-            <li value="1" onclick="select_type(this)" onblur="blur_type()">Ticket</li>
-            <li value="2" onclick="select_type(this)" onblur="blur_type()">Air pay</li>
-            <li value="3" onclick="select_type(this)" onblur="blur_type()">Food</li>
-      </ul>
-    </div>
-
   </div>
+{% include 'stock/menu/popup.html' %}
   <div class="hidden_form">
     <input id="type"   name="type"   value="{{item.type}}">
     <input name="form_verifypwd" id="form_verifypwd">
@@ -72,8 +62,9 @@
 
 {%endblock%}
 {%block script%}
-<script type="text/javascript" src="{% static 'stock/scripts/edit.js' %}">
-
+<script type="text/javascript">
+  popup = "popup_item"
+  viewpage()
 </script>
 
 {%endblock%}

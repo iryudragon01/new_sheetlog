@@ -3,6 +3,7 @@
 <html lang="en" dir="ltr">
   <head>
     <link rel="stylesheet" href="{% static 'stock/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'stock/css/edit.css' %}">
     <meta charset="utf-8">
     <title>Layout 2</title>
   </head>
@@ -19,8 +20,10 @@
       {%block content%}
       {%endblock%}
 
-    {%block script%}
-    {%endblock script%}
+    <script type="text/javascript" src="{% static 'stock/scripts/edit.js' %}">
 
+    </script>    
+        {%block script%}
+        {%endblock script%}
   </body>
 </html>

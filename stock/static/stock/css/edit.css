@@ -21,6 +21,7 @@ button:hover{
 .row{
   border: 1px solid DodgerBlue;
   font-size: 30px;
+
 }
 .row p{
   float: left;
@@ -47,22 +48,18 @@ button:hover{
   color: black;
   cursor: pointer;
 }
-#popup{
+div[id^="popup_"]{
   display: none;
-}
-#popup ul{
   position: fixed;
-  /*top: 200px;
-  left: 480px;*/
 }
-#popup li{
+div[id^="popup_"] li{
   list-style: none;
   text-align: right;
   font-size: 20px;
   padding: 14px 56px;
   background-color: #ccc;
 }
-#popup li:hover{
+div[id^="popup_"] li:hover{
   background-color: #ddd;
 }
 .hidden_form{
@@ -100,7 +97,7 @@ button:hover{
   .row p:first-child{
     width: 350px;
   }
-  #popup li{
+  div[id^="popup_"] li{
     font-size: 22px;
   }
 

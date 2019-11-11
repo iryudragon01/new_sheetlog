@@ -8,24 +8,23 @@
 <div class="container">
 <form class="form" action="" method="post">
     {% csrf_token %}
-    <div class="content-group">
-        <label class="form-control-label">รายการ</label>
-        <input class="form-control form-control-lg" name="name" />
-    </div>
-    <div class="content-group">
-        <label class="form-control-label">ยอดเงิน</label>
-        <input class="form-control form-control-lg" type="number" name="value" />
-    </div>
-    <div class="content-group">
-        <label class="form-control-label">ประเภท</label>
-        <select class="form-control form-control-lg" name="record_type" type="number">
-            <option value="none">ประเภท</option>
-            <option value=1>รายรับ</option>
-            <option value=2>รายจ่าย</option>
-        </select>
-    </div>
-<button type="submit" >บันทึก</button>
+    <div class="row">
+        <p>รายการ</p>
+        <p><input name="name" /><p>
+    </div><div class="clr"></div>
+    <div class="row">
+        <p>ยอดเงิน</p>
+        <p><input type="number" name="value" /><p>
+    </div><div class="clr"></div>
+    <div class="row">
+        <p>ประเภท</p>
+        <p id="type_selectd" onclick="popup_type(event,'popup_statement')">select</p>
+    </div><div class="clr"></div>
+    <div class="row">
+      <p><button type="button" name="button">Cancel</button></p>
+      <p><button type="submit" >บันทึก</button></p>
+
+    </div><div class="clr"></div>
 </form>
 </div>
-
 {% endblock%}

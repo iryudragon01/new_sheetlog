@@ -1,7 +1,6 @@
 {%extends 'stock/layout.html'%}
 {%block content%}
 {% load static %}
-<link rel="stylesheet" href="{% static 'stock/css/edit.css' %}">
 <p class="result">{{createnewitem}}</p>
 
 <form class="" action="" method="post" id="form">
@@ -22,7 +21,7 @@
 
     <div class="row">
       <p>ประเภทสินค้า</p>
-      <p id="type_selectd" onclick="popup_type(event)">click to select</p>
+      <p id="type_selectd" onclick="popup_type(event,'popup_item')">click to select</p>
     </div>
     <div class="clr"></div>
 
@@ -32,17 +31,8 @@
     </div>
     <div class="clr"></div>
 
-      <div id="popup">
-        <ul id='setposition'>
-              <li value="1" onclick="select_type(this)" onblur="blur_type()">Ticket</li>
-              <li value="2" onclick="select_type(this)" onblur="blur_type()">Air pay</li>
-              <li value="3" onclick="select_type(this)" onblur="blur_type()">Food</li>
-        </ul>
-
-      </div>
-
 </div>
-
+{% include 'stock/menu/popup.html' %}
 <div class="hidden_form">
     <input  type="number" id='type' name="type" value="">
     <button type="submit" id ="CREATE" name="CREATE">CREATE</button>
@@ -53,7 +43,7 @@
 
 {%endblock%}
 {% block script %}
-<script type="text/javascript" src="{% static 'stock/scripts/edit.js' %}">
-
+<script type="text/javascript">
+  popup='popup_item'
 </script>
 {% endblock script %}
