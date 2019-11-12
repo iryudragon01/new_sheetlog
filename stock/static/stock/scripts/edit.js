@@ -1,4 +1,5 @@
 var popup
+current_popup=''
 function viewpage(){
   mytype=document.getElementById('type').value
   select = document.getElementById(popup).childNodes
@@ -7,15 +8,19 @@ function viewpage(){
 }
 
 function popup_type(e){
+    current_popup=''
+    cancel_popup()
     position= document.getElementById(popup)
     position.style.top=eval(e.pageY-50)+'px'
     position.style.left=eval(e.pageX-50)+'px'
     position.style.display="block";
+    current_popup=popup
   }
 
 
 function select_type(type){
   document.getElementById(popup).style.display="none"
+  current_popup=''
   set_type(type)
   }
 

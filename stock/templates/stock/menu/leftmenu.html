@@ -2,9 +2,8 @@
         <li><a href="{% url 'stock:index' %}">Home</a></li>
         <li><a href="{% url 'stock:list_item' %} ">สินค้า</a></li>
         <li><a href="{% url 'stock:list_top_up' %}">เติมสินค้า</a></li>
-        <li><a href="{% url 'stock:list_statement' 1 %}">Income</a></li>
-        <li><a href="{% url 'stock:list_statement' 2 %}">Expense</a></li><li>
-        <li><a href="{% url 'stock:list_statement' 3 %}">Temp</a></li>
+        <li><a onclick="menu_statement(event)">รายรับ-รายจ่าย</a></li>
+        <li class="clr"></li>
 
 {% if is_Display_reset %}
   <li id="date_display" >

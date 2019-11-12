@@ -62,6 +62,10 @@ div[id^="popup_"] li{
 div[id^="popup_"] li:hover{
   background-color: #ddd;
 }
+div[id^="popup_"] a{
+  text-decoration: none;
+  color: black;
+}
 .hidden_form{
   display: none;
 }
@@ -86,6 +90,10 @@ div[id^="popup_"] li:hover{
   color: red;
   font-size: 50px;
   text-align: center;
+}
+#fullpage{
+  margin-top: 15px;
+
 }
 @media(min-width: 1000px) {
   .container{

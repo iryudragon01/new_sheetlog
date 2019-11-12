@@ -8,22 +8,24 @@
     <title>Layout 2</title>
   </head>
   <body>
-
     <nav id="navbar">
       {% include 'stock/menu/leftmenu.html' %}
     </nav>
     <div class="clr"></div>
-
+    <div id="fullpage" onclick="cancel_popup()">
 
 
 
       {%block content%}
       {%endblock%}
 
-    <script type="text/javascript" src="{% static 'stock/scripts/edit.js' %}">
-
-    </script>    
+              </div>
+      {% include 'stock/menu/popup.html' %}
+          <script type="text/javascript" src="{% static 'stock/scripts/edit.js' %}"></script>
+          <script type="text/javascript" src="{% static 'stock/scripts/menu.js' %}"></script>
         {%block script%}
         {%endblock script%}
+
+
   </body>
 </html>

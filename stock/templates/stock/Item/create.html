@@ -21,7 +21,7 @@
 
     <div class="row">
       <p>ประเภทสินค้า</p>
-      <p id="type_selectd" onclick="popup_type(event,'popup_item')">click to select</p>
+      <p id="type_selectd" onclick="popup_type(event)">click to select</p>
     </div>
     <div class="clr"></div>
 
@@ -32,7 +32,6 @@
     <div class="clr"></div>
 
 </div>
-{% include 'stock/menu/popup.html' %}
 <div class="hidden_form">
     <input  type="number" id='type' name="type" value="">
     <button type="submit" id ="CREATE" name="CREATE">CREATE</button>
