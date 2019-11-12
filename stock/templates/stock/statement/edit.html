@@ -3,18 +3,18 @@
 {% if message %}
 <div class="message">{{message}}</div>
 {% endif %}
-{% if income %}
+{% if statement %}
 <form action="" method="post" id="form">
 <div class="container">
     {%csrf_token%}
     <div class="row">
       <p>รายการ</p>
-      <p>{{income.name}}</p>
+      <p>{{statement.name}}</p>
     </div><div class="clr"></div>
 
     <div class="row">
       <p>ยอดเงิน</p>
-      <p><input type="text" name="value" value="{{income.value}}"></p>
+      <p><input type="text" name="value" value="{{statement.value}}"></p>
     </div><div class="clr"></div>
 
     <div class="row">
@@ -23,14 +23,15 @@
     </div><div class="clr"></div>
 
     <div class="row">
-      <p>Delete {{income.name}}</p>
+      <p>Delete {{statement.name}}</p>
       <p><button type="button" onclick="verify('DELETE',event)">DELETE</button></p>
     </div><div class="clr"></div>
 
 </div>
 
 <div class="hidden_form">
-    <input  type="hidden" name="income_id" value="{{income.id}}" />
+    <input type="text" name="form" value="{{form}}">
+    <input  type="hidden" name="statement_id" value="{{statement.id}}" />
     <input type="" name="form_verifypwd" id="form_verifypwd" value="">
     <button type="submit" name="DELETE" id="DELETE"></button>
 </div>

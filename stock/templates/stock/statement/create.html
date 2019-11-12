@@ -5,8 +5,9 @@
   {{message}}
 </div>
 {% endif %}
+{% if form %}
 <div class="container">
-<form class="form" action="" method="post">
+<form id="form" action="" method="post">
     {% csrf_token %}
     <div class="row">
         <p>รายการ</p>
@@ -18,7 +19,7 @@
     </div><div class="clr"></div>
     <div class="row">
         <p>ประเภท</p>
-        <p id="type_selectd" onclick="popup_type(event)">เลือกประเภท</p>
+        <p id="type_selectd" >เลือกประเภท</p>
     </div><div class="clr"></div>
     <div class="row">
       <p><button type="button" onclick="history.go(-1)">Cancel</button></p>
@@ -26,15 +27,23 @@
 
     </div><div class="clr"></div>
   <div class="hidden_form">
-    <input type="text" name="type" id="type" value="">
+    <input type="text" name="type" id="type" value="{{form}}">
 
   </div>
 </form>
 </div>
+
 {% include 'stock/menu/popup.html' %}
+
+{% endif %}
 {% endblock%}
+
 {% block script %}
+{% if popup %}
 <script type="text/javascript">
-  popup = 'popup_statement'
+  popup = '{{popup}}'
+  viewpage()
 </script>
+
+{% endif %}
 {% endblock script %}

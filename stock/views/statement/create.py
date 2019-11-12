@@ -1,4 +1,4 @@
-from stock.models import Income, Expense
+from stock.models import Income, Expense,TempExpense
 from django.utils import timezone
 from django.contrib.auth.models import User
 
@@ -19,46 +19,37 @@ def create(request):
     elif record_type == '2':
         Expense(name=name, value=value, date_log=timezone.now()).save()
         return 'success-expense'
+    elif record_type == '3':
+        TempExpense(name=name, value=value, date_log=timezone.now()).save()
+        return 'success-temp'
     else:
         result['message'] = 'select type'
     return result
 
 
 def edit(request):
-    id = request.POST['income_id']
+    item = None
+    id = request.POST['statement_id']
     value = request.POST['value']
     if value == '':
         return 'Amount is not valid'
+    if request.POST.get('form') == '1':
+        item = Income.objects.get(id=id)
+    if request.POST.get('form') == '2':
+        item = Expense.objects.get(id=id)
+    if request.POST.get('form') == '3':
+        item = TempExpense.objects.get(id=id)
+
     if int(value) < 0:
         return 'Amount is not valid'
     if 'DELETE' in request.POST:
         if check_password(request):
-            Income.objects.get(id=id).delete()
+            item.delete()
             return 'deleted'
         return 'password is not correct'
     else:
-        update = Income.objects.get(id=id)
-        update.value = int(value)
-        update.save()
-        return 'updated'
-
-
-def editexpense(request):
-    id = request.POST['expense_id']
-    value = request.POST['value']
-    if value == '':
-        return 'Amount is not valid'
-    if int(value) < 0:
-        return 'Amount is not valid'
-    if 'DELETE' in request.POST:
-        if check_password(request):
-            Expense.objects.get(id=id).delete()
-            return 'deleted'
-        return 'password is not correct'
-    else:
-        update = Expense.objects.get(id=id)
-        update.value = int(value)
-        update.save()
+        item.value = int(value)
+        item.save()
         return 'updated'
 
 

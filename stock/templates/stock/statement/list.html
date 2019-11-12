@@ -1,7 +1,7 @@
 {% extends 'stock/layout.html' %}
 {% block content %}
 <div class="container">
-{% if temps %}
+{% if lists %}
     <table class="table">
       <tr>
         <th>วันที่</th>
@@ -9,18 +9,18 @@
         <th>จำนวน</th>
         <th>แก้ไข</th>
       </tr>
-      {% for temp in temps %}
+      {% for list in lists %}
       <tr>
-        <td>{{temp.date_log}}</td>
-        <td>{{temp.name}}</td>
-        <td>{{temp.value}}</td>
-        <td><a href="{% url 'stock:edit_temp' temp.id %}"><button>Edit</button></a></td>
+        <td>{{list.date_log}}</td>
+        <td>{{list.name}}</td>
+        <td>{{list.value}}</td>
+        <td><a href="{% url 'stock:edit_statement' form list.id  %}"><button>Edit</button></a></td>
       </tr>
       {% endfor %}
 {% endif %}
     <tr>
         <td>
-            <a class="btn btn-success" href="{% url 'stock:create_temp' %}">เพิ่มรายการ</a>
+            <a class="btn btn-success" href="{% url 'stock:create_statement' form %}">เพิ่มรายการ</a>
         </td>
 
     </tr>
