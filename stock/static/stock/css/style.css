@@ -92,10 +92,9 @@ body{
   max-width: 100px;
   margin: auto;
 }
-
-
-
-
+.last_value input{
+  display: none;
+}
 
 .topup_display{
   line-height: 0px;
@@ -107,6 +106,12 @@ body{
   width: 50px;
   text-align: right;
 }
+.topup_display p:nth-child(1){
+  width: 200px;
+}
+.topup_display p:nth-child(2){
+  width: 100px;
+}
 .topup_display p.income{
   color: green;
 }
@@ -115,9 +120,6 @@ body{
 }
 .topup_display p.temp{
   color: red;
-}
-.topup_display p:first-child{
-  width: 170px;
 }
 /*
 @@media(max-width=600px) {
