@@ -1,33 +1,12 @@
-function showinput(id){
-  for(i=0 ; i<last_value.length;i++){
-    last_value[i].querySelector('input').style.display="none"
-    last_value[i].querySelector('label').style.display="block"
-  }
-  my_input = last_value[eval(id-1)].querySelector('input')
-  my_label = last_value[eval(id-1)].querySelector('label')
-  my_label.style.display = "none";
-  my_input.style.display="block";
-  my_input.focus()
-  my_input.select()
-    nextid(id)
+popupinput = document.getElementById('popup_input')
+const log = document.getElementById('main_tab');
+const last_value = document.getElementsByClassName("last_value");
+var totalitem=document.getElementsByClassName('lastvalue').length
 
-
+function nextid(id){
+  if(id==totalitem){return 1
+  }else{ return eval(id+1)}
 }
-function keydowninput(e,id,inputitem){
-  if(e.keyCode==13){
-    my_label = last_value[eval(id-1)].querySelector('label')
-    my_label.innerHTML = inputitem.value
-
-    showinput(nextid(id))
-  }
-}
-function blurinput(id,inputitem){
-    my_label = last_value[eval(id-1)].querySelector('label')
-    my_label.innerHTML = inputitem.value
-    inputitem.style.display = "none";
-    my_label.style.display = "block";
-}
-
 
 function getdate(){
         get_date=document.getElementById('date_block')
@@ -57,37 +36,55 @@ function opentab(pagename,linkbutton,colorbg){
      document.getElementById(pagename).style.display="block";
      linkbutton.style.backgroundColor="#ccc";
      }
-     opentab("main_tab",document.getElementById('main_button'),'#4caf50')
 
 
 
 
 
-const log = document.getElementById('main_tab');
-const last_value = document.getElementsByClassName("last_value");
-var next_id=1
-var totalitem=document.getElementsByClassName('lastvalue').length
-function nextid(id){
-    if(id==last_value.length)
-        {
-          next_id=1;
-          return next_id
-        }
-    else{
-          next_id=eval(id)+1
-          return next_id
-        }
-    }
 
+function input(item,position){
+pos = item.getBoundingClientRect();
+popupinput.style.display ="none"
+popupinput.for=item
+popupinput.type="number"
+popupinput.value=eval(item.innerHTML)
+popupinput.style.top=pos.top+'px'
+popupinput.style.left=pos.left+'px'
+popupinput.style.display = 'block'
+popupinput.focus()
+popupinput.select()
 
+}
+function inputkeydown(event){
+  if(event.keyCode ==13){
 
+    sub=popupinput.for.id.split('_')
+    oldvalue=eval(popupinput.for.innerHTML)
+    newvalue=eval(popupinput.value)
+    diff=eval(newvalue-oldvalue)
+    lasttd=document.getElementById("last_"+sub[1])
+    lasttd.innerHTML=eval(eval(lasttd.innerHTML)+diff)
+    saletd=document.getElementById("sale_"+sub[1])
+    saletd.innerHTML=eval(eval(saletd.innerHTML)+diff)
+    popupinput.style.display = "none"
+    document.getElementById(sub[0]+"_"+nextid(eval(sub[1]))).click()
+    updatetable()
 
-document.addEventListener('keypress', logKey);
-function logKey(e) {
-  if(13==e.which){
-  document.getElementById("input_"+next_id).focus()
-  document.getElementById("input_"+next_id).select()
-
-  nextid(next_id)
   }
 }
+function inputblur(){
+  popup_input.style.display = "none"
+}
+function updatetable(){
+  summoney=0
+  for(i=1;i<=totalitem;i++){
+    price=eval(document.getElementById('price_'+i).innerHTML)
+    sale=eval(document.getElementById('sale_'+i).innerHTML)
+    money=price*sale
+    summoney +=money
+    document.getElementById("money_"+i).innerHTML=money
+  }
+  document.getElementById('sum_'+totalitem).innerHTML=summoney
+}
+
+opentab("main_tab",document.getElementById('main_button'),'#4caf50')

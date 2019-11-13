@@ -16,17 +16,12 @@
     <tr>
         <th>{{item.name}}</th>
         <td>{{item_start}}</td>
-        <td  onclick="showinput({{forloop.counter}})" class="last_value">
-            <label>{{item_end}}</label>
-            <input name="{{item.name}}" value="{{item_end}}"
-              onblur="blurinput({{forloop.counter}},this)"
-              type="number" onkeydown="keydowninput(event,{{forloop.counter}},this)"
-            />
+        <td name="{{item.name}}" id="last_{{forloop.counter}}" onclick="input(this,event)">{{item_end}}
         </td>
-        <td>{{ item.price }}</td>
-        <td>{{ item_sale }}</td>
-        <td>{{item_money }}</td>
-    <td>{% if forloop.last %}
+        <td id="price_{{forloop.counter}}">{{ item.price }}</td>
+        <td id="sale_{{forloop.counter}}" onclick="input(this,event)" class="lastvalue">{{ item_sale }}</td>
+        <td id="money_{{forloop.counter}}">{{item_money }}</td>
+        <td id="sum_{{forloop.counter}}">{% if forloop.last %}
         {{item_sum}} {% endif %}</td>
     </tr>
 {% endfor %}

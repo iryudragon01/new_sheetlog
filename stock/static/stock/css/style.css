@@ -82,20 +82,6 @@ body{
   font-size: 17px;
   text-align: center;
 }
-.table td label{
-
-}
-.table td input{
-  background-color:inherit;
-  font-size: 17px;
-  padding: 14px 16px;
-  max-width: 100px;
-  margin: auto;
-}
-.last_value input{
-  display: none;
-}
-
 .topup_display{
   line-height: 0px;
 }
@@ -120,6 +106,16 @@ body{
 }
 .topup_display p.temp{
   color: red;
+}
+#popup_input{
+  display: none;
+  width: 100px;
+  position: fixed;
+  text-align: center;
+  font-size: 17px;
+  padding: 14px 16px;
+  background-color: #ccc;
+
 }
 /*
 @@media(max-width=600px) {
