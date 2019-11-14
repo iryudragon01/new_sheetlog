@@ -112,10 +112,25 @@ body{
   width: 100px;
   position: fixed;
   text-align: center;
-  font-size: 17px;
-  padding: 14px 16px;
+  font-size: 20px;
   background-color: #ccc;
 
+}
+.display_table{
+  line-height: 1px;
+}
+
+.display_table p{
+  float: left;
+  font-size: 20px;
+  width: 100px;
+  text-align: right;
+}
+.display_table p[id^="name_"]{
+  width: 150px;
+}
+p[id^='type_']{
+  display: none;
 }
 /*
 @@media(max-width=600px) {

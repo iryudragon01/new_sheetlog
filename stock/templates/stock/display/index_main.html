@@ -2,28 +2,33 @@
 {% if items %}
 <form action="" method="post" />
 {%csrf_token%}
-<table class="table">
-    <tr>
-        <th>name</th>
-        <th>first</th>
-        <th>last</th>
-        <th>price</th>
-        <th>sales</th>
-        <th>money</th>
-        <th>sum</th>
-    </tr>
+<div class="display_table">
+  <p id="name_title">name</p>
+  <p id="type_title">type</p>
+  <p id="first_title">start</p>
+  <p id="last_title">end</p>
+  <p id="sale_title">sale</p>
+  <p id="price_title">price</p>
+  <p id="money_title">money</p>
+  <p id="sum_title">sum</p>
+</div><div class="clr">
+
+</div>
 {% for item,item_start,item_end,item_sale,item_money,item_sum in items %}
-    <tr>
-        <th>{{item.name}}</th>
-        <td>{{item_start}}</td>
-        <td name="{{item.name}}" id="last_{{forloop.counter}}" onclick="input(this,event)">{{item_end}}
-        </td>
-        <td id="price_{{forloop.counter}}">{{ item.price }}</td>
-        <td id="sale_{{forloop.counter}}" onclick="input(this,event)" class="lastvalue">{{ item_sale }}</td>
-        <td id="money_{{forloop.counter}}">{{item_money }}</td>
-        <td id="sum_{{forloop.counter}}">{% if forloop.last %}
-        {{item_sum}} {% endif %}</td>
-    </tr>
+<div class="display_table">
+  <p id="name_{{forloop.counter}}" class="items">{{item.name}}</p>
+  <p id="type_{{forloop.counter}}">{{item.type}}</p>
+  <p id="first_{{forloop.counter}}">{{item_start}}</p>
+  <p id="last_{{forloop.counter}}" onclick="input(this)">{{item_end}}</p>
+  <p id="sale_{{forloop.counter}}" onclick="input(this)">{{item_sale}}</p>
+  <p id="price_{{forloop.counter}}">{{item.price}}</p>
+  <p id="money_{{forloop.counter}}">{{item_money}}</p>
+  <p id="sum_{{forloop.counter}}">{% if forloop.last %}
+  {{item_sum}} {% endif %}</p>
+</div>
+<div class="clr">
+
+</div>
 {% endfor %}
 </table>
 
