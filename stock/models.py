@@ -14,6 +14,16 @@ class Item(models.Model):
         return self.name
 
 
+class Sale(models.Model):
+    objects: models.manager
+    item = models.ForeignKey(Item,on_delete=models.CASCADE)
+    volume = models.PositiveIntegerField()
+    create_time = models.DateTimeField(auto_now=True)
+    create_user = models.TextField(null=False)
+    edit_time = models.DateTimeField(null=False)
+    edit_user = models.TextField(null=False)
+
+
 class LogSheet(models.Model):  # log sheet
     objects: models.manager
     item = models.ForeignKey(Item, on_delete=models.CASCADE)

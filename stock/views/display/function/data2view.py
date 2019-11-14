@@ -1,8 +1,9 @@
 from django.db.models import Sum
 from django.utils import timezone
-from stock.models import Item, TopUp, LogSheet
+from stock.models import Item, TopUp, LogSheet,Sale
 from . import calculater, statement as statementfile
 from account_control.scripts.script import user_superior
+from account_control.models import UserStart
 
 
 def getdisplay(log_sheets_start, log_sheets_end, date_statement_end):
@@ -106,6 +107,7 @@ def gettopup(top_ups, logsheet):
 
 # start set display
 def setdisplay(request):
+    worker = UserStart.objects.get(username=request.user)
     items = Item.objects.all()
     log_sheet_last = LogSheet.objects.last()
     current_time = timezone.now()
@@ -114,8 +116,24 @@ def setdisplay(request):
                                  version=log_sheet_last.version + 1,
                                  value=request.POST.get('last_'+item.name),
                                  date_log=current_time)
-        new_log_sheet.save()
-        myname='sale_'+item.name
-        print(item.name,' : ',request.POST.get(myname))
+        #new_log_sheet.save()
+        save_sale(request,item,worker.date_log)
     user_superior(request)  # update account_manager start
     return
+
+
+def save_sale(request, item,start_time=timezone.now()):
+    all_sale = Sale.objects.filter(item=item,create_time__gt=start_time).aggregate(Sum('volume'))['volume__sum']
+    sale = int(request.POST.get('sale_'+item.name))
+    if all_sale is not None:
+        sale = sale-int(all_sale)
+    if sale is not 0:
+        print(sale , '  sale')
+        new_sale = Sale(item=item,
+                        volume=int(request.POST.get('sale_' + item.name)),
+                        create_user=request.user,
+                        edit_time=timezone.now(),
+                        edit_user=request.user)
+        new_sale.save()
+
+
