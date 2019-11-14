@@ -73,6 +73,8 @@ function inputkeydown(event){
       lasttd = document.getElementById('last_'+sub[1])
       lasttd.innerHTML = eval(lasttd.innerHTML)+eval(diff)*eval(typemulti)
       popupinput.for.innerHTML=newvalue
+      document.getElementById('update_last_'+sub[1]).value=eval(lasttd.innerHTML)
+      document.getElementById('update_sale_'+sub[1]).value=eval(saletd.innerHTML)
 
     }
 

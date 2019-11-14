@@ -112,9 +112,10 @@ def setdisplay(request):
     for item in items:
         new_log_sheet = LogSheet(item=item,
                                  version=log_sheet_last.version + 1,
-                                 value=request.POST.get(item.name),
+                                 value=request.POST.get('last_'+item.name),
                                  date_log=current_time)
         new_log_sheet.save()
-
+        myname='sale_'+item.name
+        print(item.name,' : ',request.POST.get(myname))
     user_superior(request)  # update account_manager start
-    return calculater.normal_get_log(request)
+    return

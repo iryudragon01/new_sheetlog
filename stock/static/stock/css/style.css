@@ -9,12 +9,10 @@
 }*/
 .clr{
   clear: both;
-  overflow: hidden;
 }
 
 body{
   background-image: url("../images/bgimage.jpg");
-  overflow: hidden;
 
 }
 #navbar{
@@ -111,13 +109,15 @@ body{
   display: none;
   width: 100px;
   position: fixed;
-  text-align: center;
+  text-align: right;
   font-size: 20px;
   background-color: #ccc;
 
 }
 .display_table{
   line-height: 1px;
+  border: 1px solid #3E7073;
+  clear: both;
 }
 
 .display_table p{
@@ -131,6 +131,12 @@ body{
 }
 p[id^='type_']{
   display: none;
+}
+input[id^='update_']{
+  display: none;
+}
+#submit_display_table{
+  float: center;
 }
 /*
 @@media(max-width=600px) {

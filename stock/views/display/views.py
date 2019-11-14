@@ -14,7 +14,8 @@ def IndexView(request):
             content = calculater.text2date(request)
             return render(request, 'stock/display/index.html', content)
         else:
-            content = data2view.setdisplay(request)
+            data2view.setdisplay(request)
+            content = calculater.normal_get_log(request)
             return render(request, 'stock/display/index.html', content)
 
     else:  # login and get view list

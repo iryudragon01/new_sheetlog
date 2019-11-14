@@ -11,27 +11,26 @@
   <p id="price_title">price</p>
   <p id="money_title">money</p>
   <p id="sum_title">sum</p>
-</div><div class="clr">
-
-</div>
 {% for item,item_start,item_end,item_sale,item_money,item_sum in items %}
 <div class="display_table">
   <p id="name_{{forloop.counter}}" class="items">{{item.name}}</p>
   <p id="type_{{forloop.counter}}">{{item.type}}</p>
   <p id="first_{{forloop.counter}}">{{item_start}}</p>
   <p id="last_{{forloop.counter}}" onclick="input(this)">{{item_end}}</p>
-  <p id="sale_{{forloop.counter}}" onclick="input(this)">{{item_sale}}</p>
+  <input id="update_last_{{forloop.counter}}" name="last_{{item.name}}" value='{{item_end}}'>
+  <input id="update_sale_{{forloop.counter}}" name="sale_{{item.name}}" value='{{item_sale}}'>
+  <p id="sale_{{forloop.counter}}" onclick="input(this)" >{{item_sale}}</p>
   <p id="price_{{forloop.counter}}">{{item.price}}</p>
   <p id="money_{{forloop.counter}}">{{item_money}}</p>
   <p id="sum_{{forloop.counter}}">{% if forloop.last %}
   {{item_sum}} {% endif %}</p>
 </div>
+{% endfor %}
 <div class="clr">
 
 </div>
-{% endfor %}
-</table>
+<button type="submit" name="submit" id='submit_display_table'>Update</button>
 
     </form>
-<!--  </table> -->
+
 {% endif %}
