@@ -4,7 +4,7 @@ from account_control.models import UserStart
 from .function import calculater,data2view
 from django.utils import timezone
 from account_control.scripts import script
-
+from . import form
 
 def IndexView(request):
     if not script.account_permit(request):  # check user permit before do other thing
@@ -26,3 +26,10 @@ def IndexView(request):
             return render(request, 'stock/display/index.html', content)
 
 
+def testformView(request):
+    if request.POST:
+        login = form.loginform(request.POST)
+        if login.is_valid():
+            print(login.cleaned_data['name'])
+    login = form.loginform()
+    return render(request,'stock/test/test.html',{'form':login})

@@ -1,0 +1,20 @@
+{% extends 'stock/layout.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'stock/css/test.css' %}">
+<div class="container">
+      <table class='table'>
+        <form class="" action="" method="post">
+          {% csrf_token %}
+          {{form}}
+          <tr>
+            <th></th>
+            <td>
+            <button type="submit" name="button" id='submit'>Login</button></td>
+          </tr>
+        </form>
+      </table>
+
+</div>
+{% endblock content%}

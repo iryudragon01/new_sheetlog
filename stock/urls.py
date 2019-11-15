@@ -25,4 +25,7 @@ urlpatterns = [
     path('edit_statement/<int:form>/<int:pk>/',statement_views.EditView,name='edit_statement'),
 
 
+    #test
+    path('test/',display_views.testformView)
+
 ]

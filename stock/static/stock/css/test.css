@@ -1,0 +1,18 @@
+.table{
+  line-height: 1px;
+  background-color: pink;
+}
+tr{
+  display:block;
+}
+th{
+  width: 100px;
+}
+input{
+  font-size: 17px;
+  padding: 10px 10px;
+  width: 250px;
+}
+button[type='submit']{
+  background-color: green;
+}
